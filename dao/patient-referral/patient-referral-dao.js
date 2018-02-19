@@ -9,12 +9,8 @@ var connection = require('../../dao/connection/mysql-connection-service.js');
 var authorizer = require('../../authorization/etl-authorizer');
 
 var def = {
-<<<<<<< HEAD
     createPatientReferral: createPatientReferral,
     updatePatientReferralNotification:updatePatientReferralNotification
-=======
-    createPatientReferral: createPatientReferral
->>>>>>> 7ae31a830ab43557d609c613e2da6b10c285a279
 };
 
 module.exports = def;
@@ -49,11 +45,8 @@ function createPatientReferral(newPatientReferral) {
                                         .set('referred_from_location_id', newPateintReferral.referredFromLocationId)
                                         .set('referred_to_location_id', newPateintReferral.referredToLocationId)
                                         .set('program_workflow_state_id', newPateintReferral.programWorkflowStateId)
-<<<<<<< HEAD
                                         .set('notification_status', newPateintReferral.notificationStatus)
                                         .set('referral_reason', newPateintReferral.referralReason)
-=======
->>>>>>> 7ae31a830ab43557d609c613e2da6b10c285a279
                                         .set('date_created', squel.fval('NOW()'))
                                         .set('creator', getCurrentUserIdSquel())
                                         .set('voided', 0)
@@ -76,11 +69,7 @@ function createPatientReferral(newPatientReferral) {
                                                     resolve(updatedCohort);
                                                 })
                                                 .catch(function (error) {
-<<<<<<< HEAD
                                                     reject('An unknown error occured when  trying to fetch the updated resource');
-=======
-                                                    resolve('An unknown error occured when  trying to fetch the updated resource');
->>>>>>> 7ae31a830ab43557d609c613e2da6b10c285a279
                                                 });
                                         }
                                         conn.release();
@@ -103,7 +92,6 @@ function createPatientReferral(newPatientReferral) {
    
 }
 
-<<<<<<< HEAD
 function updatePatientReferralNotification(patientReferralId, newPatientReferral) {
     return new Promise(function (resolve, reject) {
         validateUpdateNotificationPayload(newPatientReferral)
@@ -208,8 +196,6 @@ function validateUpdateNotificationPayload(newPatientReferralPayload) {
         resolve(validationResult);
     });
 }
-=======
->>>>>>> 7ae31a830ab43557d609c613e2da6b10c285a279
 function validateCreateReferralPayload(patientReferralPayload) {
     return new Promise(function (resolve, reject) {
         var validationErrors = {
@@ -233,11 +219,7 @@ function validateCreateReferralPayload(patientReferralPayload) {
                 resolve(validationErrors);
             })
             .catch(function (error) {
-<<<<<<< HEAD
                 reject('An error occured while trying to validate patient referral payload',error);
-=======
-                reject('An error occured while trying to validate patient referral payload');
->>>>>>> 7ae31a830ab43557d609c613e2da6b10c285a279
             })
     });
 }
@@ -296,7 +278,6 @@ function hasRequiredReferralFields(newPatientReferralPayload) {
             message: 'Program Workflow State is required'
         });
     }
-<<<<<<< HEAD
     if (_.isEmpty(newPatientReferralPayload.referralReason)) {
         validationResult.isValid = false;
         validationResult.errors.push({
@@ -304,8 +285,6 @@ function hasRequiredReferralFields(newPatientReferralPayload) {
             message: 'Referral reason is required'
         });
     }
-=======
->>>>>>> 7ae31a830ab43557d609c613e2da6b10c285a279
 
     return validationResult;
 }
