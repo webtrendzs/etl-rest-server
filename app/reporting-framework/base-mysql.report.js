@@ -56,6 +56,7 @@ import * as dataentry_statistics_base from './json-reports/dataentry-statistics-
 
 import * as hiv_summary_aggregate from './json-reports/hiv-summary-aggregate.json';
 import * as hiv_summary_base from './json-reports/hiv-summary-base.json';
+import * as genexpert_base from './json-reports/genexpert-base.json';
 import * as patient_flow from './json-reports/patient-flow.json';
 import * as clinical_art_overview_aggregate from './json-reports/clinical-art-overview-aggregate.json';
 import * as clinical_art_overview_base from './json-reports/clinical-art-overview-base.json';
@@ -245,6 +246,11 @@ export class BaseMysqlReport {
                         hivSummaryBase: hiv_summary_base
                     });
                     break;
+                case 'genexpertBase':
+                  resolve({
+                    main: genexpert_base
+                  });
+              break;
                 case 'patientFlow':
                     resolve({
                         main: patient_flow
