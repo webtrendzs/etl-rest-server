@@ -3542,7 +3542,7 @@ module.exports = function () {
                         }
                     },
                     handler: function (request, reply) {
-                        request.query.indicator = 'needs_vl_in_period';
+                        // request.query.indicator = 'needs_vl_in_period';
                         request.query.reportName = 'labs-report';
                         preRequest.resolveLocationIdsToLocationUuids(request,
                             function () {

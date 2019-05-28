@@ -38,8 +38,11 @@ export class patientsRequiringVLService {
         let self = this;
         let locations = reportParams.locationUuids.split(',');
         reportParams.locationUuids = locations;
+        reportParams.startDate = reportParams.startDate.split('T')[0];
+        reportParams.endDate = reportParams.endDate.split('T')[0];
+      console.log(reportParams.startDate, reportParams.endDate);
         return new Promise(function (resolve, reject) {
-            let report = new PatientlistMysqlReport('labsReportAggregate', reportParams)
+            let report = new PatientlistMysqlReport('labsReportAggregate', reportParams);
             //TODO: Do some pre processing
             Promise.join(report.generatePatientListReport(['needs_vl_in_period']),
                 (result) => {

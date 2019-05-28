@@ -74,6 +74,7 @@ import * as daily_attendance_base from './json-reports/daily-attendance-base.jso
 import * as patint_change_status_tracker_aggregate from './json-reports/patint-change-status-tracker-aggregate.json';
 import * as labs_report_aggregate from './json-reports/labs-report-aggregate.json';
 import * as labs_report_base from './json-reports/labs-report-base.json';
+import * as labs_report_cohort from './json-reports/labs-report-cohort.json';
 import * as labs_and_imaging_dataset_base from './json-reports/labs-and-imaging-dataset-base.json';
 import * as patients_requiring_viral_load_template from './json-reports/patients-requiring-viral-load-template.json';
 import * as clinic_lab_orders_report from './json-reports/clinic-lab-orders-report-base.json';
@@ -137,7 +138,7 @@ export class BaseMysqlReport {
 
                             that.reportQuery = sqlQuery;
                             // run query
-                            // console.log('Query', sqlQuery);
+                            console.log('Query', sqlQuery);
                             that.executeReportQuery(that.reportQuery)
                                 .then((result) => {
                                     return that.transFormResults(that.reportSchemas, result);
@@ -467,7 +468,7 @@ export class BaseMysqlReport {
                     resolve({
                         main: this.cloneJsonSchema(labs_report_aggregate),
                         labsReportBase: this.cloneJsonSchema(labs_report_base),
-
+                        labsReportCohort: this.cloneJsonSchema(labs_report_cohort)
                     });
                     break;
                 case 'patients-requiring-viral-load-template':
