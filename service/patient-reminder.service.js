@@ -377,13 +377,11 @@ function dnaReminder(data) {
 }
 
 function dstReminders(data) {
-    // console.log('dstRemindersdata', data);
 
     let reminders = [];
     if (data.has_dst_result === 1) {
         reminders.push({
-            message: 'New DRT/DST Image result : (collected on ' +
-            Moment(data.test_date).format('DD-MM-YYYY') + ').',
+            message: 'New DRT/DST Image result.',
             title: 'DRT/DST Reminders',
             type: 'success',
             display: {
@@ -401,8 +399,7 @@ function geneXpertReminders(data) {
     let reminders = [];
     if (data.has_gene_xpert_result === 1) {
         reminders.push({
-            message: 'New GeneXpert Image result : (collected on ' +
-            Moment(data.test_date).format('DD-MM-YYYY') + ').',
+            message: 'New GeneXpert Image result.',
             title: 'GeneXpert Reminders',
             type: 'success',
             display: {
