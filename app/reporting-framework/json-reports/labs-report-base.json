@@ -4,11 +4,6 @@
   "tag": "",
   "description": "",
   "uses": [
-    {
-      "name": "labsReportCohort",
-      "version": "1.0",
-      "type": "dataset_def"
-    }
   ],
   "sources": [
     {
@@ -54,14 +49,6 @@
         "type": "LEFT",
         "joinCondition": "t2.person_id = pa.person_id"
       }
-    },
-    {
-      "dataSet": "labsReportCohort",
-      "alias": "t4",
-      "join": {
-        "type": "LEFT",
-        "joinCondition": "t2.person_id = t4.person_id"
-      }
     }
   ],
   "columns": [
@@ -73,7 +60,7 @@
     {
       "type": "simple_column",
       "alias": "needs_vl_in_period",
-      "column": "t4.needs_vl_in_period"
+      "column": "t2.expected_vl_date"
     },
     {
       "type": "simple_column",
@@ -154,8 +141,23 @@
       },
       {
         "filterType": "tableColumns",
-        "conditionExpression": "t4.needs_vl_in_period = 1",
+        "conditionExpression": "t2.expected_vl_date = 1",
         "parameterName": ""
+      },
+      {
+        "filterType": "tableColumns",
+        "conditionExpression": "t2.vl_1_date >= ?",
+        "parameterName": "startDate"
+      },
+      {
+        "filterType": "tableColumns",
+        "conditionExpression": "t2.vl_1_date <= ?",
+        "parameterName": "endDate"
+      },
+      {
+        "filterType": "tableColumns",
+        "conditionExpression": "t2.rtc_date <= DATE_ADD(?, INTERVAL -4 DAY)",
+        "parameterName": "endDate"
       }
     ]
   }
